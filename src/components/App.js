@@ -13,12 +13,12 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = ({ calendar, food }) => ({
   calendar: ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday'].map(day => ({
     day,
-    meals: Object.keys(state[day]).reduce((meals, meal) => {
-      meals[meal] = state[day][meal] 
-        ? state[day][meal]
+    meals: Object.keys(calendar[day]).reduce((meals, meal) => {
+      meals[meal] = calendar[day][meal] 
+        ? food[calendar[day][meal]]
         : null
       return meals
     }, {})
